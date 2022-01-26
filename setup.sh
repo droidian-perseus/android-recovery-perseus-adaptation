@@ -13,19 +13,12 @@ mkdir /r;
 mount /data/rootfs.img /r;
 
 # Apply bluetooth fix
-ui_print "Applying bluetooth fix..."
-cp data/board-address /r/var/lib/bluetooth/
+ui_print "Applying device adaptations..."
+cp -r data/* /r/
 
-# Apply wifi fix
-ui_print "Applying WiFi fix..."
-cp data/enable-ipa.service /r/etc/systemd/system/
-
-# Apply scaling fix
-ui_print "Applying scaling fix..."
-mkdir -p /r/etc/phosh/
-cp data/rootston.ini /r/etc/phosh/
+# Changing permissions for scripts
+chmod +x /r/usr/local/bin/fix-wifi.sh
+chmod +x /r/usr/local/bin/beryllium-extras.sh
 
 # umount rootfs
 umount /r;
-
-ui_print "All fixes applied."
