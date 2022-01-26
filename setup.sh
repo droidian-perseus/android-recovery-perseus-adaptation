@@ -16,8 +16,7 @@ mount /data/rootfs.img /r;
 ui_print "Applying device adaptations..."
 cp -r data/* /r/
 
-# Changing permissions for scripts
-chmod +x /r/usr/local/bin/fix-wifi.sh
+# Changing permissions for script
 chmod +x /r/usr/local/bin/beryllium-extras.sh
 
 # umount rootfs
