@@ -14,6 +14,7 @@ mount /data/rootfs.img /r;
 
 # Apply bluetooth fix
 ui_print "Applying device adaptations..."
+rm -f /r/etc/ofono/ril_subscription.conf
 cp -r data/* /r/
 
 # Changing permissions for script
