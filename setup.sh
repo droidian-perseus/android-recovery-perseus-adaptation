@@ -17,7 +17,10 @@ ui_print "Applying device adaptations..."
 rm -f /r/etc/ofono/ril_subscription.conf
 cp -r data/* /r/
 
-# Changing permissions for script
+# Do "chmod a+c /etc/rc.local" for first boot
+chroot /r /bin/bash /local/bin/first-boot.sh
+
+# Changing permissions for extras script
 chmod +x /r/usr/local/bin/beryllium-extras.sh
 
 # umount rootfs
