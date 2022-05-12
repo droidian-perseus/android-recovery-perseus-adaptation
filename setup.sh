@@ -22,3 +22,6 @@ chmod +x /r/usr/local/bin/beryllium-extras.sh
 
 # umount rootfs
 umount /r;
+
+# flash boot.img
+flash_image /dev/block/bootdevice/by-name/boot boot.img
