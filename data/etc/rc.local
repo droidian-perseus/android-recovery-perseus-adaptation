@@ -1,6 +1,0 @@
-#!/bin/bash
-systemctl daemon-reload
-systemctl enable enable-ipa
-systemctl start enable-ipa
-rm -f /etc/rc.local
-exit 0
