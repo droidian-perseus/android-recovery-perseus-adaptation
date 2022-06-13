@@ -26,4 +26,3 @@ umount /r;
 # flash boot.img
 flash_image /dev/block/bootdevice/by-name/boot boot.img
 flash_image /dev/block/bootdevice/by-name/dtbo dtbo.img
-flash_image /dev/block/bootdevice/by-name/vendor vendor.img
