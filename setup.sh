@@ -1,4 +1,4 @@
-# Droidian Adaptation for the Xiaomi Pocophone F1 (beryllium)
+# Droidian Adaptation for the Xiaomi Mi MIX 3 (perseus)
 # https://droidian.org
 
 OUTFD=/proc/self/fd/$1;
@@ -6,6 +6,7 @@ VENDOR_DEVICE_PROP=`grep ro.product.vendor.device /vendor/build.prop | cut -d "=
 
 # ui_print <text>
 ui_print() { echo -e "ui_print $1\nui_print" > $OUTFD; }
+ui_print "Authors: Joel Selvaraj, 1petro, Perseus X"
 
 mkdir /r;
 
@@ -14,17 +15,15 @@ mount /data/rootfs.img /r;
 
 # Apply bluetooth fix
 ui_print "Applying device adaptations..."
-rm -f /r/etc/ofono/ril_subscription.conf
 cp -r data/* /r/
 
-# Do "chmod a+c /etc/rc.local" for first boot
-chroot /r /bin/bash /local/bin/first-boot.sh
-
 # Changing permissions for extras script
-chmod +x /r/usr/local/bin/beryllium-extras.sh
+chmod +x /r/usr/local/bin/perseus-extras.sh
 
 # umount rootfs
 umount /r;
 
 # flash boot.img
 flash_image /dev/block/bootdevice/by-name/boot boot.img
+flash_image /dev/block/bootdevice/by-name/dtbo dtbo.img
+flash_image /dev/block/bootdevice/by-name/vendor vendor.img
